@@ -8,8 +8,13 @@ const cors = require('cors')
 
 const app = express();
 const server = http.createServer(app);
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-app.use(cors())
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 app.get('/api/trending', (req, res) => {
